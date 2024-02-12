@@ -1,14 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
-    <title>4lan.sdl</title>
+    <title>Simulador de Aventuras</title>
+   
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Simulador de Aventuras</h1>
+        <p>Elige tu aventura:</p>
+        <ul>
+            <li><button class="btn" onclick="mostrarModal('bosque')">Aventura en el bosque</button></li>
+            <li><button class="btn" onclick="mostrarModal('espacio')">Viaje espacial</button></li>
+            <li><button class="btn" onclick="mostrarModal('submarina')">Exploración submarina</button></li>
+        </ul>
+        <div id="resultado" class="resultado"></div>
+        <div id="puntuacion_total"></div>
+        <button class="btn" onclick="resetearPuntuaciones()">Resetear puntuaciones</button>
+    </div>
 
-    <script src="/Component/Variables/index.js"></script>
+    <!-- Modal para la aventura en el bosque -->
+    <div id="bosque_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('bosque')">&times;</span>
+            <p>Estás en medio de un frondoso bosque. ¿Qué decides hacer?</p>
+            <button class="btn" onclick="elegirOpcion('bosque', 'seguir')">Seguir el sendero</button>
+            <button class="btn" onclick="elegirOpcion('bosque', 'acampar')">Acampar aquí</button>
+            <button class="btn" onclick="elegirOpcion('bosque', 'explorar')">Explorar fuera del sendero</button>
+        </div>
+    </div>
+
+    <!-- Modal para la continuación de la aventura en el bosque -->
+    <div id="bosque_continuacion_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('bosque_continuacion')">&times;</span>
+            <p>Continuación de la aventura en el bosque:</p>
+            <button class="btn" onclick="elegirContinuacion('bosque', 'mapa')">Explorar el mapa</button>
+            <button class="btn" onclick="elegirContinuacion('bosque', 'descansar')">Descansar bajo un árbol</button>
+            <button class="btn" onclick="elegirContinuacion('bosque', 'caminar')">Caminar en busca de pistas</button>
+        </div>
+    </div>
+
+    <!-- Modal para la aventura espacial -->
+    <div id="espacio_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('espacio')">&times;</span>
+            <p>Estás en el espacio sideral. ¿Cuál será tu siguiente acción?</p>
+            <button class="btn" onclick="elegirOpcion('espacio', 'aterrizar')">Aterrizar en un planeta desconocido</button>
+            <button class="btn" onclick="elegirOpcion('espacio', 'explorar')">Explorar la galaxia</button>
+            <button class="btn" onclick="elegirOpcion('espacio', 'contactar')">Contactar con una civilización alienígena</button>
+        </div>
+    </div>
+
+    <!-- Modal para la continuación de la aventura espacial -->
+    <div id="espacio_continuacion_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('espacio_continuacion')">&times;</span>
+            <p>Continuación de la aventura espacial:</p>
+            <button class="btn" onclick="elegirContinuacion('espacio', 'descubrimiento')">Investigar un extraño objeto</button>
+            <button class="btn" onclick="elegirContinuacion('espacio', 'explorar_planeta')">Explorar el planeta</button>
+            <button class="btn" onclick="elegirContinuacion('espacio', 'regresar')">Regresar a la nave</button>
+        </div>
+    </div>
+
+    <!-- Modal para la exploración submarina -->
+    <div id="submarina_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('submarina')">&times;</span>
+            <p>Te sumerges en las profundidades del océano. ¿Qué decides hacer?</p>
+            <button class="btn" onclick="elegirOpcion('submarina', 'arrecife')">Investigar un arrecife cercano</button>
+            <button class="btn" onclick="elegirOpcion('submarina', 'fosab')">Explorar una fosa abisal</button>
+            <button class="btn" onclick="elegirOpcion('submarina', 'delfines')">Seguir a un grupo de delfines</button>
+        </div>
+    </div>
+
+    <!-- Modal para la continuación de la exploración submarina -->
+    <div id="submarina_continuacion_modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('submarina_continuacion')">&times;</span>
+            <p>Continuación de la exploración submarina:</p>
+            <button class="btn" onclick="elegirContinuacion('submarina', 'peces')">Observar la fauna marina</button>
+            <button class="btn" onclick="elegirContinuacion('submarina', 'cueva')">Explorar una cueva submarina</button>
+            <button class="btn" onclick="elegirContinuacion('submarina', 'superficie')">Regresar a la superficie</button>
+        </div>
+    </div>
+
+  <script src="/Component/Variables/index.js"></script>
 </body>
 </html>

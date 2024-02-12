@@ -1,79 +1,179 @@
-// pedir al usuario que elija una opcionn
-let eleccion = prompt("Elige tu aventura: \n1. Aventura en el bosque \n2. Viaje espacial \n3. Exploración submarina");
+  // Puntuaciones de cada aventura
+  let puntuaciones = {
+    bosque: 0,
+    espacio: 0,
+    submarina: 0
+};
 
-// aventura en el bosque
-if (eleccion === "1") {
-    alert("Te has adentrado en un bosque misterioso. A tu alrededor, los árboles susurran secretos antiguos.");
-    let accionBosque = prompt("¿Qué decides hacer? \n1. Seguir el sendero \n2. Acampar aquí \n3. Explorar fuera del sendero");
+// Función para mostrar un modal
+function mostrarModal(idModal) {
+    let modal = document.getElementById(idModal + '_modal');
+    modal.style.display = "block";
+}
 
-    if (accionBosque === "1") {
-        let accionClaro = prompt("El zorro parece amistoso y tiene algo en la boca. ¿Qué haces? \n1. Acercarte al zorro \n2. Ignorarlo y continuar");
+// Función para cerrar un modal
+function cerrarModal(idModal) {
+    let modal = document.getElementById(idModal + '_modal');
+    modal.style.display = "none";
+}
 
-        if (accionClaro === "1") {
-            alert("Te acercas y el zorro suelta un mapa antiguo. Este te lleva a un tesoro escondido en el bosque. ¡Has encontrado un gran tesoro!");
-        } else if (accionClaro === "2") {
-            alert("Ignoras al zorro y continúas tu camino, disfrutando de la belleza natural del bosque. A veces, la verdadera aventura es simplemente explorar.");
-        }
+// Función para manejar la elección de opciones dentro de los modales
+function elegirOpcion(modal, opcion) {
+    let accion;
+    let puntos;
 
-    } else if (accionBosque === "2") {
-        let accionNoche = prompt("Escuchas pasos. ¿Qué haces? \n1. Salir a investigar \n2. Quedarte en la tienda");
-
-        if (accionNoche === "1") {
-            alert("Sales y descubres un grupo de ciervos. Es un momento mágico que te llena de paz. Una experiencia inolvidable en la naturaleza.");
-        } else if (accionNoche === "2") {
-            alert("Te quedas dentro, y al amanecer encuentras huellas de animales alrededor de tu carpa. Fue una noche segura, pero te preguntas qué habrías visto.");
-        }
-
-    } else if (accionBosque === "3") {
-        let accionCueva = prompt("Entras a la cueva. Hay dos caminos. ¿Cuál eliges? \n1. El camino de la izquierda \n2. El camino de la derecha");
-
-        if (accionCueva === "1") {
-            alert("El camino te lleva a una cámara llena de diamantes brillantes. Es un descubrimiento increíble y sales del bosque lleno en conocimientos geológicos.");
-        } else if (accionCueva === "2") {
-            alert("Este camino te lleva a una salida secreta del bosque con vistas espectaculares. Te sientes rejuvenecido por esta aventura única.");
-        }
+    switch (modal) {
+        case 'bosque':
+            switch (opcion) {
+                case 'seguir':
+                    accion = "Siguiendo el sendero, encuentras un mapa antiguo dejado por un zorro. Te lleva a un tesoro escondido en el bosque.";
+                    puntos = 10;
+                    mostrarModal('bosque_continuacion');
+                    break;
+                case 'acampar':
+                    accion = "Decides acampar aquí y pasas una noche segura, pero te preguntas qué habrías descubierto si hubieras explorado más.";
+                    puntos = 5;
+                    mostrarModal('bosque_continuacion');
+                    break;
+                case 'explorar':
+                    accion = "Sales del sendero y te adentras en una cueva. Encuentras una salida secreta del bosque con vistas espectaculares.";
+                    puntos = 15;
+                    mostrarModal('bosque_continuacion');
+                    break;
+            }
+            break;
+        case 'espacio':
+            switch (opcion) {
+                case 'aterrizar':
+                    accion = "Aterrizas en un planeta desconocido y te encuentras con una civilización alienígena amistosa.";
+                    puntos = 20;
+                    mostrarModal('espacio_continuacion');
+                    break;
+                case 'explorar':
+                    accion = "Decides explorar el espacio y descubres un agujero de gusano que te lleva a una nueva galaxia.";
+                    puntos = 25;
+                    mostrarModal('espacio_continuacion');
+                    break;
+                case 'contactar':
+                    accion = "Contactas con la base y recibes instrucciones para regresar a la Tierra.";
+                    puntos = 15;
+                    mostrarModal('espacio_continuacion');
+                    break;
+            }
+            break;
+        case 'submarina':
+            switch (opcion) {
+                case 'arrecife':
+                    accion = "Investigas un arrecife cercano y descubres una especie marina desconocida.";
+                    puntos = 10;
+                    mostrarModal('submarina_continuacion');
+                    break;
+                case 'fosab':
+                    accion = "Bajas a una fosa abisal y encuentras restos de una antigua civilización submarina.";
+                    puntos = 20;
+                    mostrarModal('submarina_continuacion');
+                    break;
+                case 'delfines':
+                    accion = "Sigues a un grupo de delfines y descubres una cueva submarina secreta.";
+                    puntos = 15;
+                    mostrarModal('submarina_continuacion');
+                    break;
+            }
+            break;
     }
 
-// viaje espacial
-} else if (eleccion === "2") {
-    alert("Estás a bordo de una nave espacial, orbitando un planeta desconocido.");
-    let accionEspacio = prompt("¿Cuál será tu siguiente acción? \n1. Aterrizar en el planeta \n2. Explorar el espacio \n3. Contactar con la base");
+    // Actualiza el contenido del elemento 'resultado' con la acción elegida
+    document.getElementById('resultado').textContent = accion;
 
-    if (accionEspacio === "1") {
-        let accionPlaneta = prompt("Los alienígenas te reciben. ¿Cómo reaccionas? \n1. Intentar comunicarte \n2. Regresar a la nave");
+    // Suma los puntos correspondientes a la aventura
+    puntuaciones[modal] += puntos;
 
-        if (accionPlaneta === "1") {
-            alert("Logras comunicarte. Los alienígenas te muestran su avanzada tecnología y te ofrecen conocimientos que cambian la ciencia humana para siempre.");
-        } else if (accionPlaneta === "2") {
-            alert("Regresas a la nave y vuelves a la Tierra. Informas de tu descubrimiento, que se convierte en el inicio de una nueva era de exploración.");
-        }
+    // Muestra la puntuación total
+    mostrarPuntuacionTotal();
 
-    } else if (accionEspacio === "2") {
-        let accionNave = prompt("Investigas la nave. Encuentras un artefacto. ¿Qué haces con él? \n1. Llevarlo \n2. Dejarlo");
+    cerrarModal(modal);
+}
 
-        if (accionNave === "1") {
-            alert("El artefacto resulta ser una fuente de energía inagotable. Cambia el curso de la historia humana, llevando a una era de prosperidad.");
-        } else if (accionNave === "2") {
-            alert("Decides que es mejor no interferir. Reportas el hallazgo y te conviertes en un respetado explorador espacial, inspirando a futuras generaciones.");
-        }
+// Función para manejar la continuación de la historia
+function elegirContinuacion(modal, opcion) {
+    let accion;
+    let puntos;
 
-    } else if (accionEspacio === "3") {
-        alert("Respondes a la señal de auxilio. Rescatas a una tripulación perdida, ganando fama como héroe. Tus acciones inspiran películas y libros.");
+    switch (modal) {
+        case 'bosque':
+            switch (opcion) {
+                case 'mapa':
+                    accion = "Estudiando el mapa, descubres la ubicación exacta del tesoro y te diriges hacia allí.";
+                    puntos = 30;
+                    break;
+                case 'descansar':
+                    accion = "Te sientes renovado después de un buen descanso. Decides continuar tu aventura con energías renovadas.";
+                    puntos = 15;
+                    break;
+                case 'caminar':
+                    accion = "Caminando por el bosque, encuentras huellas que te llevan a un lugar misterioso.";
+                    puntos = 25;
+                    break;
+            }
+            break;
+        case 'espacio':
+            switch (opcion) {
+                case 'descubrimiento':
+                    accion = "Investigando el extraño objeto, descubres tecnología avanzada que puede ayudarte en tu viaje.";
+                    puntos = 35;
+                    break;
+                case 'explorar_planeta':
+                    accion = "Explorando el planeta, te encuentras con criaturas fascinantes y paisajes impresionantes.";
+                    puntos = 40;
+                    break;
+                case 'regresar':
+                    accion = "Decides regresar a la nave para planificar tu siguiente movimiento.";
+                    puntos = 20;
+                    break;
+            }
+            break;
+        case 'submarina':
+            switch (opcion) {
+                case 'peces':
+                    accion = "Observando la fauna marina, descubres una especie única que nunca antes habías visto.";
+                    puntos = 25;
+                    break;
+                case 'cueva':
+                    accion = "Explorando la cueva submarina, encuentras artefactos antiguos que cuentan historias perdidas.";
+                    puntos = 30;
+                    break;
+                case 'superficie':
+                    accion = "Decides regresar a la superficie y compartir tus descubrimientos con el mundo.";
+                    puntos = 15;
+                    break;
+            }
+            break;
     }
 
-// exploración submarina
-} else if (eleccion === "3") {
-    alert("Has sumergido en las profundidades del océano. Las criaturas marinas te rodean.");
-    let accionSubmarina = prompt("¿Qué decides hacer? \n1. Investigar un arrecife cercano \n2. Bajar a una fosa abisal \n3. Seguir a un grupo de delfines");
+    // Actualiza el contenido del elemento 'resultado' con la acción elegida
+    document.getElementById('resultado').textContent = accion;
 
-    if (accionSubmarina === "1") {
-        alert("Al investigar el tesoro, descubres artefactos de civilizaciones antiguas. Tu descubrimiento reescribe la historia del comercio marítimo antiguo.");
-    } else if (accionSubmarina === "2") {
-        alert("La ciudad submarina resulta ser un ecosistema único con nuevas especies. Tu descubrimiento aporta valiosa información sobre la biodiversidad marina.");
-    } else if (accionSubmarina === "3") {
-        alert("Siguiendo a los delfines, descubres una serie de cuevas submarinas con artefactos arqueológicos. Tu hallazgo aporta luz sobre antiguas civilizaciones marítimas.");
-    }
+    // Suma los puntos correspondientes a la aventura
+    puntuaciones[modal] += puntos;
 
-} else {
-    alert("No has elegido una opción válida. Tu aventura no ha comenzado aún.");
+    // Muestra la puntuación total
+    mostrarPuntuacionTotal();
+
+    cerrarModal(modal + '_continuacion');
+}
+
+// Función para mostrar la puntuación total
+function mostrarPuntuacionTotal() {
+    let puntuacionTotal = puntuaciones.bosque + puntuaciones.espacio + puntuaciones.submarina;
+    document.getElementById('puntuacion_total').textContent = "Puntuación Total: " + puntuacionTotal;
+}
+
+// Función para resetear las puntuaciones
+function resetearPuntuaciones() {
+    puntuaciones = {
+        bosque: 0,
+        espacio: 0,
+        submarina: 0
+    };
+    mostrarPuntuacionTotal();
 }
