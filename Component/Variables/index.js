@@ -5,19 +5,18 @@
     submarina: 0
 };
 
-// Función para mostrar un modal
+
 function mostrarModal(idModal) {
     let modal = document.getElementById(idModal + '_modal');
     modal.style.display = "block";
 }
 
-// Función para cerrar un modal
+
 function cerrarModal(idModal) {
     let modal = document.getElementById(idModal + '_modal');
     modal.style.display = "none";
 }
 
-// Función para manejar la elección de opciones dentro de los modales
 function elegirOpcion(modal, opcion) {
     let accion;
     let puntos;
@@ -82,10 +81,9 @@ function elegirOpcion(modal, opcion) {
             break;
     }
 
-    // Actualiza el contenido del elemento 'resultado' con la acción elegida
+   
     document.getElementById('resultado').textContent = accion;
 
-    // Suma los puntos correspondientes a la aventura
     puntuaciones[modal] += puntos;
 
     // Muestra la puntuación total
@@ -94,7 +92,7 @@ function elegirOpcion(modal, opcion) {
     cerrarModal(modal);
 }
 
-// Función para manejar la continuación de la historia
+
 function elegirContinuacion(modal, opcion) {
     let accion;
     let puntos;
@@ -150,25 +148,24 @@ function elegirContinuacion(modal, opcion) {
             break;
     }
 
-    // Actualiza el contenido del elemento 'resultado' con la acción elegida
+   
     document.getElementById('resultado').textContent = accion;
 
-    // Suma los puntos correspondientes a la aventura
+   
     puntuaciones[modal] += puntos;
 
-    // Muestra la puntuación total
     mostrarPuntuacionTotal();
 
     cerrarModal(modal + '_continuacion');
 }
 
-// Función para mostrar la puntuación total
+
 function mostrarPuntuacionTotal() {
     let puntuacionTotal = puntuaciones.bosque + puntuaciones.espacio + puntuaciones.submarina;
     document.getElementById('puntuacion_total').textContent = "Puntuación Total: " + puntuacionTotal;
 }
 
-// Función para resetear las puntuaciones
+
 function resetearPuntuaciones() {
     puntuaciones = {
         bosque: 0,
