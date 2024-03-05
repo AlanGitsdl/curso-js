@@ -1,0 +1,197 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #222;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    width: 80%;
+    max-width: 800px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #ffcc00;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#scoreboard {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#scoreboard p {
+    margin: 5px 0;
+    font-size: 20px;
+    color: #ddd;
+}
+
+#shoe-container {
+    margin-bottom: 30px;
+}
+
+#shoe-image {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}
+
+#options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.option-button {
+    margin: 10px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #ff3300;
+    box-shadow: 0 0 10px #ff3300;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+#start-button, #reset-button {
+    margin: 0 20px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #3399ff;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-button:hover, #reset-button:hover {
+    background-color: #3366ff;
+    box-shadow: 0 0 10px #3366ff;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    position: relative;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ddd;
+}
+
+.close:hover {
+    color: #999;
+}
+
+#next-level-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#next-level-button:hover {
+    background-color: #ff3300;
+    box-shadow: 0 0 10px #ff3300;
+}

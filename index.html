@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de Adivinar Zapatillas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Juego de Adivinar Zapatillas</h1>
+      <p>¿Puedes adivinar el nombre de estas zapatillas?</p>
+    </header>
+
+    <div id="game-container">
+      <div id="scoreboard">
+        <p>Aciertos: <span id="score">0</span></p>
+        <p>Intentos fallidos: <span id="attempts">0</span></p>
+      </div>
+      <div id="shoe-container">
+        <img id="shoe-image" src="/img/Air_Jordan_3_Retro_SE_Craft_Ivory.webp" alt="Zapatilla a adivinar">
+      </div>
+      <div id="options-container">
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+        <button class="option-button"></button>
+      </div>
+      <div id="buttons-container">
+        <button id="start-button">Iniciar Juego</button>
+        <button id="reset-button">Resetear Partida</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>¡Superaste el nivel 1!</p>
+      <button id="next-level-button">Siguiente Nivel</button>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
